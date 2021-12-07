@@ -14,6 +14,11 @@ public class ChatMessageRepository {
     }
 
     List<String> getLastTenMessages() {
-        return messages.subList(messages.size() - 10, messages.size());
+        try {
+            return messages.subList(messages.size() - 10,
+                messages.size());
+        } catch (IndexOutOfBoundsException ex) {
+            return messages;
+        }
     }
 }
