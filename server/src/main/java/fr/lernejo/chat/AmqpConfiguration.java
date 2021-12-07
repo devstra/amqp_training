@@ -18,11 +18,13 @@ public class AmqpConfiguration {
 
     @Bean
     MessageListenerAdapter listenerAdapter(ChatMessageListener chatMessageListener) {
-        return new MessageListenerAdapter(chatMessageListener, "onMessage");
+        return new MessageListenerAdapter(chatMessageListener,
+            "onMessage");
     }
 
     @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter) {
+    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+                                             MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(queueName);
